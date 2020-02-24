@@ -3,19 +3,22 @@
 :author: YAN Wenkun
 :email: yanwenkun@foxmail.com
 
-= Spring Boot 样板项目（使用 Java 与 Maven）
+= Spring Boot 样板项目（使用 Kotlin 与 Maven）
 
 本样板项目基于 https://spring.io/[Spring] 官方的 https://start.spring.io/[Spring Initializr] 生成的 https://spring.io/projects/spring-boot/[Spring Boot] 项目，
 并添加一些实用的常见配置，便于在新项目启动时“简单修改即可复用”。
 
 同时，本项目也将不断跟进上游最新版本，以便下游项目一站式更新。
 
+本项目与姊妹项目 https://github.com/yanwenkun/spring-boot-boilerplate-java[Spring Boot 样板项目（使用 Java 与 Maven）]
+基本相同，仅引入 Kotlin 语言支持，可作为 Java 项目尝试引入 Kotlin 的参考。
+
 本项目以容器或云引擎（例： https://www.aliyun.com/product/sae[阿里云 SAE] ）为部署目标，简化传统的复杂配置，减少更新维护成本。
 
 文件目录结构：
 
 ----
-spring-boot-boilerplate-java
+spring-boot-boilerplate-kotlin-maven
 │  .gitattributes
 │  .gitignore
 │  docker-compose.yml
@@ -48,11 +51,11 @@ spring-boot-boilerplate-java
 │
 └─src
     ├─main
-    │  ├─java
+    │  ├─kotlin
     │  │  └─com
     │  │      └─example
     │  │          └─demo
-    │  │                  DemoApplication.java
+    │  │                  DemoApplication.kt
     │  │
     │  └─resources
     │      │  application-dev.yml
@@ -66,11 +69,11 @@ spring-boot-boilerplate-java
     │              .gitkeep
     │
     └─test
-        └─java
+        └─kotlin
             └─com
                 └─example
                     └─demo
-                            DemoApplicationTests.java
+                            DemoApplicationTests.kt
 
 ----
 
@@ -78,6 +81,7 @@ spring-boot-boilerplate-java
 
 * 构建工具：Maven
 * Java 版本：11
+* Kotlin 使用最新正式版本
 
 与 https://start.spring.io/[Spring Initializr] 生成的 https://spring.io/projects/spring-boot/[Spring Boot] 项目相比，有如下变动：
 
@@ -122,8 +126,8 @@ spring-boot-boilerplate-java
 
 [source,sh]
 ----
-git clone https://github.com/yanwenkun/spring-boot-boilerplate-java.git
-cd spring-boot-boilerplate-java
+git clone https://github.com/yanwenkun/spring-boot-boilerplate-kotlin-maven.git
+cd spring-boot-boilerplate-kotlin-maven
 ./mvnw clean spring-boot:run
 ----
 
@@ -135,8 +139,8 @@ cd spring-boot-boilerplate-java
 
 [source,sh]
 ----
-git clone https://github.com/yanwenkun/spring-boot-boilerplate-java.git
-cd spring-boot-boilerplate-java
+git clone https://github.com/yanwenkun/spring-boot-boilerplate-kotlin-maven.git
+cd spring-boot-boilerplate-kotlin-maven
 docker-compose up --build
 ----
 
@@ -189,7 +193,7 @@ docker-compose up --build
 ** 使用Spring注解： `@Profile("dev")`
 ** 未标 `@Profile` 注解的代码段，均与配置集无关
 
-* Maven Profile 不关心 Java 代码中的注解，只关心编译资源（依赖项），`pom.xml` 中对此有举例
+* Maven Profile 不关心 Kotlin 代码中的注解，只关心编译资源（依赖项），`pom.xml` 中对此有举例
 
 === 以配置集运行
 
@@ -333,12 +337,6 @@ export SPRING_PROFILES_ACTIVE=prod
 === 版本升级清单
 
 见： link:docs/Upgrade-Checklist.adoc[版本升级清单] 。
-
-=== 为什么不默认使用 Lombok
-
-从工程管理的角度出发，Java 项目保持其代码风格的延续是很重要的。而 Lombok 的侵入性，对老项目而言是需要权衡的，请根据团队的意见做出选择。
-
-对于没有历史负担的新项目，可以考虑 https://github.com/yanwenkun/spring-boot-boilerplate-kotlin[Kotlin] 。
 
 === 使用 Maven 构建 Docker 镜像
 
