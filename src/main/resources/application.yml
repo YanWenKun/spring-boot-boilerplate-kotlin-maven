@@ -1,0 +1,7 @@
+# 全局配置
+
+spring:
+  profiles:
+    # 使 Spring Profile = Maven Profile
+    # 即来自 pom.xml 中的 activatedProperties
+    active: @activatedProperties@

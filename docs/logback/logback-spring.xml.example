@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Logback 简单配置参考 -->
+<!-- 适用于传统环境：需要将日志保存到文件，且滚动删除旧日志。容器环境无需使用该配置 -->
+<!-- 日志文件名请在 application.yml 中配置 -->
+<configuration>
+<!-- 根据 Spring Profile 选用控制台输出／文件输出 -->
+
+    <!-- 开发阶段，仅输出到控制台（STDOUT） -->
+    <springProfile name="dev">
+        <!-- 引入 Spring 默认配置 -->
+        <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+        <logger name="com.example" level="TRACE"/>
+    </springProfile>
+
+    <!-- 验证阶段，输出到控制台和文件 -->
+    <springProfile name="staging">
+        <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+        <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+        <include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+        <root level="WARN">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
+        </root>
+        <logger name="com.example" level="INFO"/>
+    </springProfile>
+
+    <!-- 生产阶段，仅输出到文件 -->
+    <springProfile name="prod">
+        <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+        <include resource="org/springframework/boot/logging/logback/file-appender.xml"/>
+        <root level="ERROR">
+            <appender-ref ref="FILE"/>
+        </root>
+        <logger name="com.example" level="WARN"/>
+    </springProfile>
+
+</configuration>
