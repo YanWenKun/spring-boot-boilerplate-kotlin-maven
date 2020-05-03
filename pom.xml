@@ -19,7 +19,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <kotlin.version>1.3.71</kotlin.version>
+        <kotlin.version>1.3.72</kotlin.version>
     </properties>
 
     <!-- 依赖项（Profile无关） 开始 -->
