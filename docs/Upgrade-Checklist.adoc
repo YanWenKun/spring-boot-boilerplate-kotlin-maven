@@ -50,7 +50,7 @@ TIP: 对企业开发建议的升级策略：如无新特性需求，可以选择
 [source,xml]
 ----
 <properties>
-    <kotlin.version>1.3.72</kotlin.version>
+    <kotlin.version>1.4.10</kotlin.version>
 </properties>
 ----
 
